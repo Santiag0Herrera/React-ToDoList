@@ -29,9 +29,9 @@ function App() {
   }
 
   const deleteTaskFromList = (data) => {
-    const {title} = data;
-    setTasks(tasks.splice(title, title));
+    console.log('delete')
   }
+
   //JSX's
   return(
     <>
