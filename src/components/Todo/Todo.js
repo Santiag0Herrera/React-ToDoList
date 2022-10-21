@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Todo = (data) => {
-  const {title, text} = data;
+  const {title, text,functionFromProp} = data;
   let [checkboxStatus, setCheckboxStatus] = useState(false);
   const checkboxText = checkboxStatus === true ? 'Done' : 'Pending';
 
@@ -16,6 +16,7 @@ const Todo = (data) => {
   return(
     <>
       <div className={checkboxStatus === true ? 'backgroundGreen card' : 'backgroundYellow card'}>
+      <button className='btn btn-secondary delete' data={title} onClick={functionFromProp}>X</button>
         <div className='card-content'>
           <h3>{title}</h3>
           <p>{text}</p>
@@ -23,7 +24,7 @@ const Todo = (data) => {
         <form className='card-form'>
             <input id="checkbox" type="checkbox" checked={checkboxStatus} onChange={handleChange}/>
             <label htmlFor="checkbox">{checkboxText}</label> 
-          </form>
+        </form>
       </div> 
     </>
   )

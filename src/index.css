@@ -1,10 +1,10 @@
 .todoContainer{
-    width: 90%;
+    width: 100%;
     margin: 30px;
     padding: 10px;
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: colums;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -21,18 +21,19 @@
 }
 
 .card{
-    padding: 20px;
+    padding: 24px 10px;
     border-radius: 0 60px 0 60px;
     border: none;
-    margin: 20px;
+    margin: 10px;
     box-shadow: 0px 0px 5px rgb(226 224 224);
     width: 250px;
-    height: 200px;
+    height: auto;
+    min-height: 200px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     justify-content: space-between;
-    box-shadow: 5px 5px 6px rgb(190, 190, 190);
+    box-shadow: 5px 5px 6px rgb(190 190 190);
 }
 
 .btn-primary{
@@ -51,6 +52,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    width: 100%;
 }
 
 form input{
@@ -68,11 +70,12 @@ form input{
     align-content: center;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 90%;
+    max-width: 400px;
     padding: 20px;
-    background-color:rgb(71, 172, 255);
+    background-color: rgb(71, 172, 255);
     border-radius: 20px;
-    box-shadow: 5px 5px 6px rgb(190, 190, 190);
+    box-shadow: 5px 5px 6px rgb(190 190 190);
 }
 
 .container-form label{
@@ -92,11 +95,12 @@ form input{
     display: flex;
     width: 100%;
     background-color: rgb(219, 232, 250);
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     align-content: center;
     height: 100%;
+    padding: 30px;
 }
 
 h1{
@@ -106,9 +110,25 @@ h1{
     width: 100%;
     text-align: center;
     padding: 30px;
-    margin-bottom: 30px;
+    margin: 0;
 }
 
 .button{
     width: 50% !important;
+}
+
+.delete{
+    position: absolute;
+    top:-10px;
+    left: -10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2000px;
+    width: 35px;
+}
+
+p{
+    width: 100%;
 }
