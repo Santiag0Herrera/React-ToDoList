@@ -1,35 +1,36 @@
 import React, { useState } from "react";
 import Todo from "./components/Todo/Todo";
+import TodoCompleted from "./components/TodoCompleted/TodoCompleted";
 
 function App() {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
-  const [tasks, setTasks] = useState([
-    {
-      id: '0',
-      title:'Test', 
-      text: 'Test description example to use as model for the toDos array'
-    },
-    {
-      id: '1',
-      title:'Test', 
-      text: 'Test description example to use as model for the toDos array'
-    },
-    {
-      id: '2',
-      title:'Test', 
-      text: 'Test description example to use as model for the toDos array'
-    }
-]);
+  const [tasks, setTasks] = useState([{id:0, title:"Example", text:"This is a test of a pending task" }]);
+  const [completedTasks, setCompletedTasks] = useState([]);
   //functions
+
   const handleSubmit = () => {
-    setTasks( tasks =>[...tasks,{title : taskName, text : taskDescription}])
+    setTasks( tasks =>[...tasks,{id: tasks.length, title : taskName, text : taskDescription}])
     setTaskName('');
     setTaskDescription('');
   }
 
-  const deleteTaskFromList = (data) => {
-    console.log('delete')
+  const handleDelete = (id) => {
+    console.log(id);
+    setTasks(tasks.splice(0, id))
+  }
+
+  const handleCompleted = (id, title, text) => {
+    setCompletedTasks( completedTasks => [...completedTasks, {id:id, title:title, text:text}])
+    handleDelete(id);
+    console.log(completedTasks.length + title);
+  }
+
+  const handleUncompleted = (id,title, text) => {
+    setCompletedTasks(completedTasks.splice(0, id));
+    setTasks( tasks =>[...tasks,{id: tasks.length, title : title, text : text}])
+
+    console.log('deleted'+ completedTasks.length + title);
   }
 
   //JSX's
@@ -47,7 +48,28 @@ function App() {
         <button type="reset" className="btn btn-primary button" onClick={handleSubmit}>Submit</button>
       </form>
       <div className="todoContainer">
-        {tasks.map((data)=> <Todo title={data.title} text={data.text} id={tasks.length+1} key={data.title+data.id} functionFromProp={deleteTaskFromList}/>)}
+      <h2>Pending</h2>
+      <br></br>
+        {tasks.map((data)=> <Todo 
+          title={data.title} 
+          text={data.text} 
+          id={data.id} 
+          key={data.title+data.id} 
+          handleDelete={handleDelete}
+          handleCompleted={handleCompleted}
+          handleUncompleted={handleUncompleted}/>)}
+      </div>
+      <div className="todoContainerDone">
+      <h2>Completed!</h2>
+      <br></br>
+        {completedTasks.map((data)=> <TodoCompleted 
+          title={data.title} 
+          text={data.text} 
+          id={data.id} 
+          key={data.title+data.id} 
+          handleDelete={handleDelete}
+          handleCompleted={handleCompleted}
+          handleUncompleted={handleUncompleted}/>)}
       </div>
     </div>
     </>

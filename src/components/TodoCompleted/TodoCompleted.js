@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const Todo = (data) => {
+const TodoCompleted = (data) => {
   const {title, text, id, handleDelete, handleCompleted, handleUncompleted} = data;
-  let [checkboxStatus, setCheckboxStatus] = useState(false);
+  let [checkboxStatus, setCheckboxStatus] = useState(true);
   const checkboxText = checkboxStatus === true ? 'Done' : 'Pending';
 
   function toggle(value){
@@ -11,12 +11,12 @@ const Todo = (data) => {
 
   const handleChange = () => {
     setCheckboxStatus(toggle);
-    checkboxStatus===false ? handleCompleted(id, title, text) : handleUncompleted(id, title);
+    checkboxStatus===false ? handleCompleted(id, title, text) : handleUncompleted(id, title, text);
   }
 
   return(
     <>
-      <div className={checkboxStatus === true ? 'backgroundGreen card' : 'backgroundYellow card'}>
+       <div className={checkboxStatus === true ? 'backgroundGreen card' : 'backgroundYellow card'}>
         <button className='btn btn-secondary delete' 
         onClick={(e)=>{
           e.preventDefault();
@@ -32,7 +32,7 @@ const Todo = (data) => {
         </form>
       </div> 
     </>
-  )
+    )
 };
 
-export default Todo;
+export default TodoCompleted;

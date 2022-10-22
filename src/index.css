@@ -4,7 +4,7 @@
     padding: 10px;
     border-radius: 10px;
     display: flex;
-    flex-direction: colums;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
