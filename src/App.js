@@ -15,22 +15,22 @@ function App() {
     setTaskDescription('');
   }
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDeleteTasks = (id) => {
     setTasks(tasks.splice(0, id))
+  }
+
+  const handleDeleteCompleted = (id) => {
+    setCompletedTasks(completedTasks.splice(0, id))
   }
 
   const handleCompleted = (id, title, text) => {
     setCompletedTasks( completedTasks => [...completedTasks, {id:id, title:title, text:text}])
-    handleDelete(id);
-    console.log(completedTasks.length + title);
+    handleDeleteTasks(id);
   }
 
   const handleUncompleted = (id,title, text) => {
     setCompletedTasks(completedTasks.splice(0, id));
     setTasks( tasks =>[...tasks,{id: tasks.length, title : title, text : text}])
-
-    console.log('deleted'+ completedTasks.length + title);
   }
 
   //JSX's
@@ -48,18 +48,18 @@ function App() {
         <button type="reset" className="btn btn-primary button" onClick={handleSubmit}>Submit</button>
       </form>
       <div className="todoContainer">
-      <h2>Pending</h2>
+      <h2>Pending...</h2>
       <br></br>
         {tasks.map((data)=> <Todo 
           title={data.title} 
           text={data.text} 
           id={data.id} 
           key={data.title+data.id} 
-          handleDelete={handleDelete}
+          handleDelete={handleDeleteTasks}
           handleCompleted={handleCompleted}
           handleUncompleted={handleUncompleted}/>)}
       </div>
-      <div className="todoContainerDone">
+      <div className="todoContainer">
       <h2>Completed!</h2>
       <br></br>
         {completedTasks.map((data)=> <TodoCompleted 
@@ -67,7 +67,7 @@ function App() {
           text={data.text} 
           id={data.id} 
           key={data.title+data.id} 
-          handleDelete={handleDelete}
+          handleDelete={handleDeleteCompleted}
           handleCompleted={handleCompleted}
           handleUncompleted={handleUncompleted}/>)}
       </div>

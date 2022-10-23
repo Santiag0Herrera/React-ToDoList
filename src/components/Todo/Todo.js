@@ -17,19 +17,19 @@ const Todo = (data) => {
   return(
     <>
       <div className={checkboxStatus === true ? 'backgroundGreen card' : 'backgroundYellow card'}>
-        <button className='btn btn-secondary delete' 
-        onClick={(e)=>{
-          e.preventDefault();
-          handleDelete(id);
-        }}>X</button>
-        <div className='card-content'>
-          <h3>{title}</h3>
-          <p>{text}</p>
+        <div className='card-main'>
+          <div className='card-content'>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+          <form className='card-form'>
+              <input id="checkbox" type="checkbox" checked={checkboxStatus} onChange={handleChange}/>
+              <label htmlFor="checkbox">{checkboxText}</label> 
+          </form>
         </div>
-        <form className='card-form'>
-            <input id="checkbox" type="checkbox" checked={checkboxStatus} onChange={handleChange}/>
-            <label htmlFor="checkbox">{checkboxText}</label> 
-        </form>
+          <button className='btn btn-secondary delete' 
+            onClick={(e)=>{e.preventDefault(); handleDelete(id);}}><h4>Delete</h4>
+          </button>
       </div> 
     </>
   )
