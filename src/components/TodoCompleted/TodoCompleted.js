@@ -31,7 +31,7 @@ const TodoCompleted = (data) => {
                 onClick={(e)=>{
                 e.preventDefault();
                 handleDelete(id);
-                }}>Delete</button>
+                }}><h4>Delete</h4></button>
             </div> 
         </>
     )

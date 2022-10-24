@@ -5,18 +5,19 @@ import TodoCompleted from "./components/TodoCompleted/TodoCompleted";
 function App() {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
-  const [tasks, setTasks] = useState([{id:0, title:"Example", text:"This is a test of a pending task" }]);
+  const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   //functions
 
   const handleSubmit = () => {
-    setTasks( tasks =>[...tasks,{id: tasks.length, title : taskName, text : taskDescription}])
+    setTasks( tasks =>[...tasks,{id: tasks.length, title: taskName, text: taskDescription}])
     setTaskName('');
     setTaskDescription('');
   }
 
   const handleDeleteTasks = (id) => {
-    setTasks(tasks.splice(0, id))
+    //setTasks(tasks.splice(id-1,1))
+    setTasks(tasks.filter(el => parseInt(el.id) !== parseInt(id)))
   }
 
   const handleDeleteCompleted = (id) => {
@@ -39,16 +40,18 @@ function App() {
     <h1>To Do List</h1>
     <div className="main-container">
       <form className="container-form">
+        <h2>New Task</h2>
+        <br></br>
         <label htmlFor="name">Task Name:</label>
-        <input id="name" type="text" value={taskName} onChange={e=>setTaskName(e.target.value)}/>
+        <input id="name" type="text" value={taskName} onChange={e=>setTaskName(e.target.value)} placeholder="New Task"/>
         <br></br>
         <label htmlFor="description">Description:</label>
-        <textarea id="description" rows="10" cols="10" value={taskDescription} onChange={e=>setTaskDescription(e.target.value)}/>
+        <textarea id="description" rows="10" cols="10" value={taskDescription} onChange={e=>setTaskDescription(e.target.value)} placeholder="This is a brief description of this new Task..."/>
         <br></br>
         <button type="reset" className="btn btn-primary button" onClick={handleSubmit}>Submit</button>
       </form>
       <div className="todoContainer">
-      <h2>Pending...</h2>
+      <h2>Pending</h2>
       <br></br>
         {tasks.map((data)=> <Todo 
           title={data.title} 

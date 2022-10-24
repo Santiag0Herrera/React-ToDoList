@@ -1,7 +1,6 @@
 .todoContainer{
-    width: 40%;
+    width: 50%;
     margin: 0px 30px;
-    padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -24,10 +23,10 @@
 }
 
 .card{
-    border-radius: 30px;
+    border-radius: 10px;
     border: none;
     box-shadow: 0px 0px 5px rgb(226 224 224);
-    width: 100%;
+    width: 90%;
     max-width: 350px;
     height: 250px;
     min-height: 200px;
@@ -37,22 +36,34 @@
     justify-content: space-between;
     box-shadow: 5px 5px 6px rgb(190 190 190);
     font-size: 80%;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 0 10px 20px 10px;
 }
 
 .card-main{
     display: flex;
     flex-direction: column;
     margin: 10px;
-    width: 80%;
+    width: 92%;
     justify-content: space-between;
     align-items: flex-start;
+    height: 90%;
 }
 
-.btn-primary{
-    width: 100px;
-    background-color: rgb(78, 78, 78);
+.button{
+    width: 150px;
+    height: 40px;
     border: none;
+    color: white;
+    background-color: #1a1a24;
+    transition: all 0.25s;
+}
+
+.button:hover{
+    background-color: white;
+    box-shadow: 0 0 10px white;
+    width: 80%;
+    color: #1a1a24;
 }
 
 .card-button{
@@ -128,24 +139,22 @@ h1{
     margin: 0;
 }
 
-.button{
-    width: 50% !important;
-}
-
 .delete{
     background-color: red;
     color: white;
     border: none;
     padding: 5px 10px;
-    border-radius: 0 30px 30px 0;
-    width: 45px;
-    height: 100%;
+    border-radius: 0 0px 10px 10px;
+    height: 40px;
+    width: 100%;
     transition: all 0.1s;
     text-align: center;
+    margin-top: 20px;
 }
 
 .delete:hover{
-    width: 60px;
+    height: 50px;
+    margin-top: 12px;
     box-shadow: -2px 2px 3px rgb(115, 115, 115);
     background-color: rgb(220, 7, 7);
 }
@@ -158,6 +167,13 @@ h4{
     margin: 0;
     padding: 0;
     font-size: 15px;
-    writing-mode:vertical-rl;
-    text-orientation: mixed;
+}
+
+h2{
+    text-decoration: underline;
+}
+
+h5{
+    font-size: 12.5px;
+    font-weight: 50px;
 }
