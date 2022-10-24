@@ -7,7 +7,6 @@ function App() {
   const [taskDescription, setTaskDescription] = useState('');
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
-  //functions
 
   const handleSubmit = () => {
     setTasks( tasks =>[...tasks,{id: tasks.length, title: taskName, text: taskDescription}])
@@ -16,12 +15,11 @@ function App() {
   }
 
   const handleDeleteTasks = (id) => {
-    //setTasks(tasks.splice(id-1,1))
     setTasks(tasks.filter(el => parseInt(el.id) !== parseInt(id)))
   }
 
-  const handleDeleteCompleted = (id) => {
-    setCompletedTasks(completedTasks.splice(0, id))
+  const handleDeleteUncompleted = (id) => {
+    setCompletedTasks(completedTasks.filter(el => parseInt(el.id) !== parseInt(id)))
   }
 
   const handleCompleted = (id, title, text) => {
@@ -30,7 +28,7 @@ function App() {
   }
 
   const handleUncompleted = (id,title, text) => {
-    setCompletedTasks(completedTasks.splice(0, id));
+    setCompletedTasks(completedTasks.filter(el => parseInt(el.id) !== parseInt(id)));
     setTasks( tasks =>[...tasks,{id: tasks.length, title : title, text : text}])
   }
 
@@ -69,8 +67,8 @@ function App() {
           title={data.title} 
           text={data.text} 
           id={data.id} 
-          key={data.title+data.id} 
-          handleDelete={handleDeleteCompleted}
+          key={data.title+data.id}
+          handleDeleteUncompleted={handleDeleteUncompleted}
           handleCompleted={handleCompleted}
           handleUncompleted={handleUncompleted}/>)}
       </div>

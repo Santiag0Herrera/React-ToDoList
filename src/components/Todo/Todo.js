@@ -19,7 +19,7 @@ const Todo = (data) => {
       <div className={checkboxStatus === true ? 'backgroundGreen card' : 'backgroundYellow card'}>
         <div className='card-main'>
           <div className='card-content'>
-            <h5>{"N°: "+id}</h5>
+            <h5>{"N°: "+(id+1)}</h5>
             <h3>{title}</h3>
             <p>{text}</p>
           </div>

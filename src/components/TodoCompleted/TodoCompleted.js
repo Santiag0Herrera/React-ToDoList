@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const TodoCompleted = (data) => {
-    const {title, text, id, handleDelete, handleCompleted, handleUncompleted} = data;
+    const {title, text, id, handleDeleteUncompleted, handleCompleted, handleUncompleted} = data;
     let [checkboxStatus, setCheckboxStatus] = useState(true);
     const checkboxText = checkboxStatus === true ? 'Done' : 'Pending';
 
@@ -30,7 +30,7 @@ const TodoCompleted = (data) => {
                 <button className='delete' 
                 onClick={(e)=>{
                 e.preventDefault();
-                handleDelete(id);
+                handleDeleteUncompleted(id);
                 }}><h4>Delete</h4></button>
             </div> 
         </>
